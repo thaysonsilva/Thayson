@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body { font-family: Arial; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: #f0f0f0; }
+        input, button { padding: 10px; margin: 5px; font-size: 18px; border-radius: 8px; border: 1px solid #ccc; }
+        button { cursor: pointer; background: #4CAF50; color: white; border: none; box-shadow: 0 5px #1b5e20; }
+        button:active { box-shadow: 0 2px #1b5e20; transform: translateY(3px); }
+    </style>
+</head>
+<body>
+    <h2>Login Usuário / Admin</h2>
+    <form method="POST">
+        <input type="text" name="username" placeholder="Nome de usuário">
+        <input type="password" name="password" placeholder="Senha (apenas admin)">
+        <button type="submit">Entrar</button>
+    </form>
+</body>
+</html>

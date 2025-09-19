@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Entrada 3D</title>
+    <style>
+        body { font-family: Arial; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; background:#e0f7fa; }
+        .btn-3d {
+            background: linear-gradient(to bottom, #4CAF50 0%, #2E7D32 100%);
+            border: none; color: white; padding: 20px 50px; font-size: 24px; cursor: pointer; border-radius: 12px;
+            box-shadow: 0 5px #1b5e20; transition: 0.1s;
+        }
+        .btn-3d:active { box-shadow: 0 2px #1b5e20; transform: translateY(3px); }
+    </style>
+</head>
+<body>
+    <h1>Bem-vindo {{ request.args.get('username', '') }}</h1>
+    <button class="btn-3d" onclick="requestPermission()">Entrar e Permitir Notificações</button>
+
+    <script>
+        const username = "{{ request.args.get('username', '') }}";
+        async function requestPermission() {
+            const permission = await Notification.requestPermission();
+            if(permission === "granted") {
+                const registration = await navigator.serviceWorker.register("/static/sw.js");
+                const subscription = await registration.pushManager.subscribe({
+                    userVisibleOnly: true,
+                    applicationServerKey: "{{ vapid_public_key }}"
+                });
+                await fetch("/subscribe", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({username, subscription})
+                });
+                alert("Notificações ativadas!");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Painel Admin</title>
+    <style>
+        body { font-family: Arial; background: #fff3e0; padding:20px; }
+        h1,h2 { color:#d84315; }
+        textarea { width:300px; height:80px; }
+        select { width:200px; height:100px; }
+        button { padding:10px 20px; background:#ff5722; color:white; border:none; cursor:pointer; border-radius:8px; box-shadow:0 4px #bf360c; }
+        button:active { box-shadow:0 2px #bf360c; transform:translateY(2px); }
+        ul { list-style:none; padding:0; }
+    </style>
+</head>
+<body>
+    <h1>Admin</h1>
+    <h2>Usuários cadastrados</h2>
+    <ul>
+        {% for user in users %}
+            <li>{{ user }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Enviar Notificação</h2>
+    <textarea id="message" placeholder="Mensagem"></textarea><br>
+    <select id="targets" multiple>
+        {% for user in users %}
+        <option value="{{ user }}">{{ user }}</option>
+        {% endfor %}
+    </select><br><br>
+    <button onclick="sendNotification()">Enviar</button>
+
+    <h2>Respostas Recebidas</h2>
+    <ul id="replies">
+        {% for r in replies %}
+            <li>{{ r.user }}: {{ r.reply }}</li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        async function sendNotification() {
+            const message = document.getElementById("message").value;
+            const selected = Array.from(document.getElementById("targets").selectedOptions).map(o=>o.value);
+            await fetch("/send_notification", {
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify({message, targets:selected})
+            });
+            alert("Notificação enviada!");
+        }
+    </script>
+</body>
+</html>

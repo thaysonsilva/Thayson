@@ -1,0 +1,124 @@
+<style>
+/* Reset básico e fonte suave */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    color: #fff;
+    perspective: 1000px; /* perspectiva para efeito 3D */
+}
+
+/* Container centralizado */
+.container {
+    background: rgba(255,255,255,0.1);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-style: preserve-3d;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Animação flutuante suave */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Cabeçalhos */
+h1, h2 {
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+}
+
+/* Inputs */
+input[type=text], input[type=password], textarea, select {
+    width: 250px;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 15px;
+    border: none;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+input[type=text]:focus, input[type=password]:focus, textarea:focus, select:focus {
+    transform: translateZ(10px) scale(1.05);
+    background: rgba(255,255,255,0.3);
+    outline: none;
+}
+
+/* Botões 3D */
+button {
+    padding: 15px 40px;
+    margin: 15px 0;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(145deg, #ff6f61, #de425b);
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 8px #b33a4b, 0 12px 25px rgba(0,0,0,0.3);
+    transition: all 0.2s ease;
+    transform-style: preserve-3d;
+}
+button:hover {
+    transform: translateY(-5px) rotateX(5deg) rotateY(5deg);
+    box-shadow: 0 12px #b33a4b, 0 20px 30px rgba(0,0,0,0.35);
+}
+button:active {
+    transform: translateY(2px) rotateX(0deg) rotateY(0deg);
+    box-shadow: 0 4px #b33a4b, 0 8px 15px rgba(0,0,0,0.25);
+}
+
+/* Listas com efeito 3D */
+ul {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+}
+ul li {
+    background: rgba(255,255,255,0.1);
+    padding: 10px 20px;
+    margin: 8px 0;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    transition: transform 0.2s ease;
+}
+ul li:hover {
+    transform: translateZ(5px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+
+/* Textarea e select */
+textarea {
+    resize: none;
+}
+select {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+}
+
+/* Responsividade */
+@media(max-width: 500px){
+    .container { padding: 30px; width: 90%; }
+    input[type=text], input[type=password], textarea, select { width: 90%; }
+    button { width: 80%; }
+}
+</style>

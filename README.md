@@ -15,7 +15,7 @@
     <button onclick="copyText('c3')">Copiar</button>
   </div>
   <div class="command">
-    <pre id="c4">cd Thayson-main</pre>
+    <pre id="c4">cd Thayson</pre>
     <button onclick="copyText('c4')">Copiar</button>
   </div>
   <div class="command">

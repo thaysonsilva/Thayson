@@ -48,4 +48,4 @@
   <footer>
     <p>💬 Qualquer dúvida, me chama no Instagram: 
       <a href="https://instagram.com/7p_thayson" target="_blank">@7p_thayson</a>  
-      (foto: céu rosa com uma mão)
+      (foto: do pedro do flamengo🤫❤️🖤)
